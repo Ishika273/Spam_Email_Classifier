@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Spam Email Classifier</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#4facfe,#00f2fe);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            width:450px;
+            background:white;
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        h1{
+            color:#333;
+            margin-bottom:20px;
+        }
+
+        textarea{
+            width:100%;
+            height:150px;
+            padding:10px;
+            border:2px solid #ddd;
+            border-radius:10px;
+            resize:none;
+            font-size:16px;
+        }
+
+        button{
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            background:#007BFF;
+            color:white;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        h2{
+            margin-top:20px;
+            color:green;
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<body>
+
+<div class="container">
+
+<h1>📧 Spam Email Classifier</h1>
+
+<form action="/predict" method="POST">
+
+<textarea
+name="message"
+placeholder="Type your email/message here..."
+required></textarea>
+
+<button type="submit">
+Check Message
+</button>
+
+</form>
+{% if prediction %}
+<div class="result {{ color }}">
+    <h2>{{ prediction }}</h2>
+    <p>{{ message }}</p>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

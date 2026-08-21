@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: #2563eb;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Customer Churn Prediction</h1>
+
+        <p>Predict whether a customer will churn</p>
+
+        <form method="POST">
+            <label>Tenure</label>
+            <input type="number" name="tenure" placeholder="Enter tenure" required>
+
+            <label>Monthly Charges</label>
+            <input type="number" name="monthly_charges" placeholder="Enter monthly charges" required>
+            <label>Gender</label>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <label>Partner</label>
+            <select name="partner">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label>Dependents</label>
+            <select name="dependents">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>  
+            </select>  
+            <label>Contract</label>
+            <select name="contract">
+                <option value="Month-to-Month">Month-to-Month</option>
+                <option value="One Year">One Year</option>
+                <option value="Two Year">Two Year</option>
+            </select>
+            <label>Internet Service</label>
+            <select name="internet_service">
+                <option value="DSL">DSL</option>
+                <option value="Fiber optic">Fiber optic</option>
+                <option value="No">No</option>
+            </select>
+            <label>Online Security</label>
+            <select name="online_security">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+            <label>Tech Support</label>
+             <select name="tech_support">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+            <label>Payment Method</label>
+            <select name="payment_method">
+               <option value="Electronic check">Electronic check</option>
+               <option value="Mailed check">Mailed check</option>
+               <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+               <option value="Credit card (automatic)">Credit card (automatic)</option>
+            </select>
+            <button type="submit">Predict Churn</button>
+            {% if prediction %}
+                <h2 style="text-align: center;margin-top: 20px;">Prediction: {{ prediction }}</h2>
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>
